@@ -3,6 +3,8 @@ package server
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/learngofarsi/go-basics-project/pkg/config"
 )
 
 type HttpServer struct {
@@ -10,10 +12,10 @@ type HttpServer struct {
 	mux    *http.ServeMux
 }
 
-func NewHttpServer(host string, port int) *HttpServer {
+func NewHttpServer(cnf config.Config) *HttpServer {
 	return &HttpServer{
 		server: http.Server{
-			Addr: fmt.Sprintf("%s:%d", host, port),
+			Addr: fmt.Sprintf("%s:%d", cnf.Host, cnf.Port),
 		},
 		mux: http.NewServeMux(),
 	}
