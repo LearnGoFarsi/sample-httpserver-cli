@@ -9,7 +9,7 @@ import (
 
 func main() {
 	cnf := config.LoadConfigOrPanic()
-	server := server.NewHttpServer(cnf)
+	server := server.NewHttpServer(cnf.Server)
 	server.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Hello World!"))
 	})
