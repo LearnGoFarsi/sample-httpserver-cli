@@ -2,10 +2,11 @@ package main
 
 import (
 	"context"
-	"net/http"
 
 	"github.com/learngofarsi/go-basics-project/internal/db"
 	"github.com/learngofarsi/go-basics-project/internal/db/postgres"
+	"github.com/learngofarsi/go-basics-project/internal/handler"
+	"github.com/learngofarsi/go-basics-project/internal/repo"
 	"github.com/learngofarsi/go-basics-project/pkg/config"
 	"github.com/learngofarsi/go-basics-project/pkg/server"
 )
@@ -22,10 +23,11 @@ func main() {
 		panic(err)
 	}
 
+	dbRepo := repo.NewTrackRepo(pg)
+	trackHandler := handler.NewTrackHandler(dbRepo)
+
 	server := server.NewHttpServer(cnf.Server)
-	server.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello World!"))
-	})
+	server.HandleFunc("/track", trackHandler.Handle)
 
 	server.Start()
 }
