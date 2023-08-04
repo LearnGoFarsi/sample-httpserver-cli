@@ -4,7 +4,7 @@ export SERVERPORT=9080
 
 # Postgre
 export PGUSER="postgres"
-export PGPASS="Manager123"
+export PGPASS="postgres"
 export PGHOST="localhost"
 export PGPORT=5432
-export PGDB="postgres"
+export PGDB="GoHttpServer"

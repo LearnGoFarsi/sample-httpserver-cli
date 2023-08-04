@@ -12,7 +12,7 @@ import (
 	"github.com/learngofarsi/go-basics-project/pkg/config"
 )
 
-const connString = "postgres://{{.User}}:{{.Pass}}@{{Host}}:{{Port}}/{{DbName}}@sslmode=disable"
+const connString = "postgres://{{.User}}:{{.Pass}}@{{.Host}}:{{.Port}}/{{.DbName}}?sslmode=disable"
 
 func buildConnectionStringOrPanic(cnf config.Postgres) string {
 
