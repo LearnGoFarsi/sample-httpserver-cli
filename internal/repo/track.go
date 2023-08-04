@@ -18,7 +18,7 @@ const (
 			RETURNING *;
 	`
 	SELECT_ALL   = "SELECT * FROM tracks"
-	SELECT_BY_ID = "SELECT * FROM tracks WHERE ID = %s"
+	SELECT_BY_ID = "SELECT * FROM tracks WHERE track_id = %s"
 )
 
 type Repo struct {
